@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>给阿嬷的情书 · Dear You</title>
+<meta name="description" content="电影《给阿嬷的情书》纪念网页 · 一封侨批，瞒了18年，成全跨越山海半世深情。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=LXGW+WenKai+TC:wght@300;400;700&family=Noto+Serif+SC:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Italiana&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============== 基础重置 ============== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{
+  font-family:"LXGW WenKai TC","Noto Serif SC","Cormorant Garamond",serif;
+  font-weight:400;
+  background:#f4ead0;
+  color:#3a2a1f;
+  line-height:2;
+  letter-spacing:.02em;
+  overflow-x:hidden;
+  position:relative;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+/* ============== 主题色变量 ============== */
+:root{
+  --paper:#f4ead0;        /* 米黄信纸 */
+  --paper-deep:#ebe0c3;   /* 暗米黄 */
+  --paper-edge:#d9c89c;   /* 信纸边 */
+  --ink:#3a2a1f;          /* 墨色文字 */
+  --ink-soft:#6b5544;     /* 浅墨 */
+  --vermilion:#a82d2a;    /* 朱砂红 */
+  --vermilion-deep:#7a1f1d;
+  --gold:#b58a3a;         /* 金 */
+  --gold-deep:#8a6624;
+  --jade:#4a6a4f;         /* 玉绿 */
+  --shadow:rgba(58,42,31,.15);
+}
+
+/* ============== 信纸纹理背景 ============== */
+body::before{
+  content:"";
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(ellipse at 20% 10%,rgba(216,193,140,.4) 0%,transparent 50%),
+    radial-gradient(ellipse at 80% 80%,rgba(180,140,80,.15) 0%,transparent 50%),
+    repeating-linear-gradient(0deg,transparent 0,transparent 2px,rgba(120,90,50,.02) 2px,rgba(120,90,50,.02) 3px),
+    var(--paper);
+  pointer-events:none;
+}
+body::after{
+  content:"";
+  position:fixed;inset:0;z-index:-1;
+  background-image:
+    radial-gradient(circle at 10% 20%,rgba(120,80,40,.04) 0%,transparent 30%),
+    radial-gradient(circle at 90% 60%,rgba(120,80,40,.04) 0%,transparent 30%);
+  pointer-events:none;
+}
+
+/* ============== 字体类 ============== */
+/* 毛笔体：用于主标题、章名——大气古朴 */
+.cn-title{font-family:"Ma Shan Zheng","LXGW WenKai TC",serif;font-weight:400;letter-spacing:.08em}
+/* 霞鹜文楷：用于副标题、引言、章节正文——优雅书卷气 */
+.cn-kaishu{font-family:"LXGW WenKai TC","Noto Serif SC",serif;font-weight:400;letter-spacing:.04em}
+/* 宋体：用于需要更正式、沉稳的段落 */
+.cn-songti{font-family:"Noto Serif SC","LXGW WenKai TC",serif;font-weight:400;letter-spacing:.03em}
+/* 英文衬线 */
+.en-serif{font-family:"Italiana","Cormorant Garamond",serif;letter-spacing:.25em;font-weight:400}
+.en-italic{font-family:"Cormorant Garamond",serif;font-style:italic;letter-spacing:.12em;font-weight:400}
+.en-cinzel{font-family:"Cinzel","Italiana",serif;letter-spacing:.4em;font-weight:400}
+
+/* ============== 顶部导航 ============== */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 40px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:linear-gradient(180deg,rgba(244,234,208,.95) 0%,rgba(244,234,208,0) 100%);
+  backdrop-filter:blur(0px);
+  transition:background .4s,box-shadow .4s,padding .4s;
+}
+.nav.scrolled{
+  background:rgba(244,234,208,.95);
+  backdrop-filter:blur(12px);
+  box-shadow:0 2px 20px var(--shadow);
+  padding:12px 40px;
+}
+.nav-brand{
+  display:flex;align-items:baseline;gap:10px;
+}
+.nav-brand .cn{font-family:"Ma Shan Zheng",serif;font-size:22px;color:var(--ink)}
+.nav-brand .en{font-family:"Italiana",serif;font-size:11px;letter-spacing:.4em;color:var(--ink-soft)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{
+  font-size:14px;color:var(--ink-soft);position:relative;
+  transition:color .3s;
+  letter-spacing:.05em;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;
+  background:var(--vermilion);transition:width .3s;
+}
+.nav-links a:hover{color:var(--vermilion)}
+.nav-links a:hover::after{width:100%}
+.nav-music{
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(168,45,42,.08);
+  transition:all .3s;
+  position:relative;
+}
+.nav-music:hover{background:rgba(168,45,42,.18);transform:scale(1.05)}
+.nav-music svg{width:18px;height:18px;color:var(--vermilion)}
+.nav-music .bar{position:absolute;display:flex;gap:2px;align-items:flex-end;height:14px}
+.nav-music .bar span{
+  width:2px;background:var(--vermilion);border-radius:1px;
+  transition:height .3s;
+}
+.nav-music.playing .bar span:nth-child(1){animation:bar 1s ease-in-out infinite}
+.nav-music.playing .bar span:nth-child(2){animation:bar 1s ease-in-out infinite .15s}
+.nav-music.playing .bar span:nth-child(3){animation:bar 1s ease-in-out infinite .3s}
+.nav-music.playing .bar span:nth-child(4){animation:bar 1s ease-in-out infinite .45s}
+@keyframes bar{0%,100%{height:3px}50%{height:14px}}
+
+/* ============== 通用排版 ============== */
+section{position:relative;padding:120px 0}
+.container{max-width:1200px;margin:0 auto;padding:0 40px;position:relative}
+.section-head{text-align:center;margin-bottom:80px;position:relative}
+.section-head .eyebrow{
+  display:inline-block;font-family:"Italiana",serif;font-size:13px;
+  letter-spacing:.5em;color:var(--gold-deep);
+  text-transform:uppercase;margin-bottom:18px;
+  position:relative;padding:0 30px;
+}
+.section-head .eyebrow::before,.section-head .eyebrow::after{
+  content:"";position:absolute;top:50%;width:20px;height:1px;background:var(--gold-deep);
+}
+.section-head .eyebrow::before{left:0}
+.section-head .eyebrow::after{right:0}
+.section-head h2{
+  font-family:"Ma Shan Zheng",serif;font-size:64px;font-weight:400;
+  color:var(--ink);letter-spacing:.05em;line-height:1.2;
+  margin-bottom:16px;
+}
+.section-head h2 .en{
+  display:block;font-family:"Italiana",serif;font-size:18px;
+  letter-spacing:.4em;color:var(--ink-soft);margin-top:14px;font-weight:400;
+}
+.section-head p.lead{
+  font-family:"LXGW WenKai TC",serif;font-size:17px;font-weight:400;
+  color:var(--ink-soft);max-width:680px;margin:0 auto;
+  letter-spacing:.1em;line-height:2;
+}
+
+/* ============== HERO ============== */
+.hero{
+  min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;
+  padding:100px 40px 80px;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    linear-gradient(180deg,rgba(244,234,208,.2) 0%,rgba(244,234,208,.55) 60%,var(--paper) 100%),
+    linear-gradient(180deg,rgba(20,15,10,.05) 0%,transparent 30%,transparent 70%,rgba(20,15,10,.15) 100%),
+    /* 远山 + 稻田 + 树 风格的 SVG */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900' preserveAspectRatio='xMidYMid slice'><defs><linearGradient id='sky' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%23f5d9a3'/><stop offset='40%' stop-color='%23f0c98a'/><stop offset='80%' stop-color='%23e8b56a'/><stop offset='100%' stop-color='%23d49850'/></linearGradient><linearGradient id='mt' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%23866b4a' stop-opacity='.5'/><stop offset='100%' stop-color='%23866b4a' stop-opacity='.15'/></linearGradient><linearGradient id='mt2' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%235c4a35' stop-opacity='.7'/><stop offset='100%' stop-color='%235c4a35' stop-opacity='.25'/></linearGradient><linearGradient id='field' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%23d9a64a'/><stop offset='50%' stop-color='%23c08a30'/><stop offset='100%' stop-color='%23986b1e'/></linearGradient><radialGradient id='sun' cx='.7' cy='.4' r='.3'><stop offset='0%' stop-color='%23fff2c8' stop-opacity='.9'/><stop offset='100%' stop-color='%23fff2c8' stop-opacity='0'/></radialGradient></defs><rect width='1600' height='900' fill='url(%23sky)'/><circle cx='1120' cy='320' r='220' fill='url(%23sun)'/><path d='M0,560 Q200,500 400,520 T800,500 T1200,520 T1600,510 L1600,900 L0,900 Z' fill='url(%23mt)'/><path d='M0,620 Q300,580 600,600 T1200,590 T1600,610 L1600,900 L0,900 Z' fill='url(%23mt2)'/><rect y='680' width='1600' height='220' fill='url(%23field)'/><g opacity='.5' fill='%23866920'><line x1='100' y1='700' x2='90' y2='850'/><line x1='150' y1='710' x2='140' y2='860'/><line x1='200' y1='705' x2='192' y2='855'/><line x1='250' y1='715' x2='244' y2='865'/><line x1='300' y1='700' x2='295' y2='850'/><line x1='350' y1='710' x2='346' y2='860'/><line x1='400' y1='705' x2='397' y2='855'/><line x1='450' y1='715' x2='448' y2='865'/><line x1='500' y1='700' x2='499' y2='850'/><line x1='550' y1='710' x2='550' y2='860'/><line x1='600' y1='705' x2='601' y2='855'/><line x1='650' y1='715' x2='653' y2='865'/><line x1='700' y1='700' x2='703' y2='850'/><line x1='750' y1='710' x2='754' y2='860'/><line x1='800' y1='705' x2='806' y2='855'/><line x1='850' y1='715' x2='858' y2='865'/><line x1='900' y1='700' x2='908' y2='850'/><line x1='950' y1='710' x2='960' y2='860'/><line x1='1000' y1='705' x2='1012' y2='855'/><line x1='1050' y1='715' x2='1064' y2='865'/><line x1='1100' y1='700' x2='1116' y2='850'/><line x1='1150' y1='710' x2='1168' y2='860'/><line x1='1200' y1='705' x2='1220' y2='855'/><line x1='1250' y1='715' x2='1272' y2='865'/><line x1='1300' y1='700' x2='1324' y2='850'/><line x1='1350' y1='710' x2='1376' y2='860'/><line x1='1400' y1='705' x2='1428' y2='855'/><line x1='1450' y1='715' x2='1480' y2='865'/><line x1='1500' y1='700' x2='1532' y2='850'/></g><g><ellipse cx='1280' cy='540' rx='90' ry='110' fill='%233a2a1f' opacity='.85'/><rect x='1275' y='630' width='10' height='80' fill='%233a2a1f'/><g fill='%234a3a2a' opacity='.7'><ellipse cx='1240' cy='480' rx='50' ry='40'/><ellipse cx='1320' cy='470' rx='55' ry='42'/><ellipse cx='1280' cy='440' rx='48' ry='38'/><ellipse cx='1210' cy='500' rx='40' ry='32'/><ellipse cx='1350' cy='510' rx='42' ry='34'/><ellipse cx='1280' cy='500' rx='60' ry='45'/></g></g></svg>");
+  background-size:cover;background-position:center;
+  filter:saturate(.9) contrast(1.05);
+}
+.hero-content{
+  position:relative;z-index:2;text-align:center;
+  max-width:900px;
+}
+.hero-stamp{
+  display:inline-block;width:80px;height:80px;border-radius:50%;
+  border:2px solid var(--vermilion);color:var(--vermilion);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 40px;
+  font-family:"Ma Shan Zheng",serif;font-size:14px;line-height:1.2;
+  text-align:center;position:relative;
+  transform:rotate(-8deg);opacity:0;animation:fadeIn 1.4s .3s forwards;
+}
+.hero-stamp::before{
+  content:"";position:absolute;inset:-8px;border-radius:50%;
+  border:1px dashed var(--vermilion);opacity:.5;
+}
+.hero-eyebrow{
+  font-family:"Italiana",serif;font-size:14px;letter-spacing:.5em;
+  color:var(--ink-soft);margin-bottom:30px;
+  opacity:0;animation:fadeIn 1.2s .6s forwards;
+}
+.hero-title{
+  font-family:"Ma Shan Zheng",serif;
+  font-size:clamp(60px,10vw,140px);
+  line-height:1.1;
+  color:var(--ink);
+  letter-spacing:.06em;
+  margin-bottom:10px;
+  position:relative;display:inline-block;
+  opacity:0;animation:fadeIn 1.6s .9s forwards;
+}
+.hero-title .small-cn{
+  font-size:.32em;display:inline-block;margin:0 .15em;
+  color:var(--vermilion);
+  font-family:"LXGW WenKai TC","Ma Shan Zheng",serif;
+  font-weight:400;letter-spacing:.05em;
+}
+.hero-title-en{
+  font-family:"Italiana",serif;font-size:clamp(18px,2.2vw,30px);
+  letter-spacing:.55em;color:var(--ink-soft);
+  margin:20px 0 50px;
+  opacity:0;animation:fadeIn 1.4s 1.2s forwards;
+}
+.hero-sub{
+  font-family:"LXGW WenKai TC",serif;
+  font-size:clamp(15px,1.6vw,19px);
+  color:var(--ink);
+  max-width:640px;margin:0 auto 60px;
+  letter-spacing:.1em;line-height:2.3;
+  font-weight:400;
+  opacity:0;animation:fadeIn 1.4s 1.5s forwards;
+}
+.hero-sub .quote{color:var(--vermilion);font-style:italic;font-weight:500}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:14px 36px;border:1px solid var(--vermilion);
+  color:var(--vermilion);font-size:14px;letter-spacing:.2em;
+  border-radius:0;background:rgba(168,45,42,.04);
+  transition:all .4s;
+  opacity:0;animation:fadeIn 1.4s 1.8s forwards;
+}
+.hero-cta:hover{background:var(--vermilion);color:var(--paper);transform:translateY(-2px);box-shadow:0 8px 20px rgba(168,45,42,.3)}
+.hero-cta svg{width:16px;height:16px}
+.hero-tagline{
+  position:absolute;left:50%;bottom:30px;transform:translateX(-50%);
+  font-family:"Italiana",serif;font-size:11px;letter-spacing:.6em;
+  color:var(--ink-soft);
+  opacity:0;animation:fadeIn 1.4s 2.2s forwards,floating 2.5s ease-in-out 2.2s infinite;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.hero-tagline .line{width:1px;height:30px;background:var(--ink-soft);opacity:.4}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floating{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+
+/* 木棉花飘落 */
+.kapok{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.kapok span{
+  position:absolute;top:-30px;display:block;
+  width:14px;height:14px;
+  background:radial-gradient(circle at 30% 30%,#d8322e,#a82824);
+  border-radius:0 100% 0 100%;
+  transform:rotate(45deg);
+  opacity:0;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  0%{transform:translate(0,0) rotate(0);opacity:0}
+  10%{opacity:.7}
+  100%{transform:translate(120px,110vh) rotate(720deg);opacity:0}
+}
+
+/* ============== 卷首语 ============== */
+.prologue{
+  text-align:center;padding:80px 0 60px;
+}
+.prologue-quote{
+  font-family:"LXGW WenKai TC",serif;
+  font-size:clamp(18px,2vw,24px);
+  color:var(--ink);max-width:780px;margin:0 auto;
+  line-height:2.4;letter-spacing:.1em;
+  position:relative;
+}
+.prologue-quote::before,.prologue-quote::after{
+  content:"""";font-family:"Italiana",serif;font-size:60px;
+  color:var(--vermilion);opacity:.6;line-height:0;
+  position:absolute;
+}
+.prologue-quote::before{left:-30px;top:18px}
+.prologue-quote::after{right:-30px;bottom:-10px}
+.prologue-mark{
+  display:inline-block;width:8px;height:8px;
+  background:var(--vermilion);border-radius:50%;
+  margin:30px auto 0;display:block;
+}
+.prologue-by{
+  font-family:"Italiana",serif;font-size:12px;letter-spacing:.5em;
+  color:var(--ink-soft);margin-top:30px;
+}
+
+/* ============== 故事章节 ============== */
+.story{padding:100px 0 80px}
+.chapter{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+  margin-bottom:160px;
+  opacity:0;transform:translateY(40px);
+  transition:opacity 1s,transform 1s;
+}
+.chapter.visible{opacity:1;transform:translateY(0)}
+.chapter:nth-child(even){direction:rtl}
+.chapter:nth-child(even) > *{direction:ltr}
+.chapter-num{
+  font-family:"Italiana",serif;font-size:120px;line-height:1;
+  color:var(--gold);opacity:.25;
+  letter-spacing:0;font-weight:400;
+}
+.chapter-tag{
+  display:inline-block;padding:6px 18px;
+  background:rgba(168,45,42,.1);color:var(--vermilion);
+  font-family:"Italiana",serif;font-size:12px;letter-spacing:.4em;
+  margin-bottom:24px;border-left:2px solid var(--vermilion);
+}
+.chapter-title{
+  font-family:"Ma Shan Zheng",serif;font-size:54px;
+  color:var(--ink);line-height:1.2;margin-bottom:8px;
+  letter-spacing:.05em;
+}
+.chapter-title-en{
+  font-family:"Italiana",serif;font-size:14px;letter-spacing:.4em;
+  color:var(--ink-soft);margin-bottom:30px;display:block;
+}
+.chapter-text{
+  font-family:"LXGW WenKai TC","Noto Serif SC",serif;font-size:17px;font-weight:400;
+  color:var(--ink);line-height:2.2;letter-spacing:.04em;
+}
+.chapter-text .em{color:var(--vermilion);font-weight:500;font-style:normal}
+.chapter-text .quote{
+  display:block;padding:16px 24px;margin:20px 0;
+  border-left:3px solid var(--vermilion);
+  background:rgba(168,45,42,.04);
+  font-style:italic;color:var(--vermilion-deep);
+  font-family:"LXGW WenKai TC",serif;letter-spacing:.06em;
+}
+.chapter-text p{margin-bottom:18px}
+.chapter-text .em{color:var(--vermilion);font-weight:500}
+.chapter-text .quote{
+  display:block;padding:16px 24px;margin:20px 0;
+  border-left:3px solid var(--vermilion);
+  background:rgba(168,45,42,.04);
+  font-style:italic;color:var(--vermilion-deep);
+}
+.chapter-img{
+  position:relative;border-radius:0;
+  overflow:hidden;
+  box-shadow:0 20px 50px var(--shadow);
+}
+.chapter-img img{width:100%;height:100%;object-fit:cover}
+.chapter-img::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(58,42,31,.05) 0%,transparent 100%);
+  pointer-events:none;z-index:1;
+}
+.chapter-img .caption{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:18px 24px;
+  background:linear-gradient(0deg,rgba(0,0,0,.6) 0%,transparent 100%);
+  color:#f0e6cf;font-size:12px;letter-spacing:.15em;
+  font-family:"LXGW WenKai TC",serif;
+  z-index:2;
+}
+.chapter-img .seal{
+  position:absolute;top:20px;right:20px;
+  width:60px;height:60px;border-radius:50%;
+  border:2px solid var(--vermilion);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--vermilion);font-family:"Ma Shan Zheng",serif;
+  font-size:14px;line-height:1;text-align:center;
+  background:rgba(244,234,208,.7);backdrop-filter:blur(4px);
+  z-index:2;transform:rotate(-6deg);
+}
+
+/* ============== 时间线 ============== */
+.timeline-section{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-deep) 100%);position:relative}
+.timeline-section::before{
+  content:"";position:absolute;inset:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/><feColorMatrix values='0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .2 0 0 0 .08 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  opacity:.5;pointer-events:none;
+}
+.timeline-wrap{position:relative;max-width:1000px;margin:0 auto;padding:40px 0}
+.timeline-line{
+  position:absolute;left:50%;top:0;bottom:0;width:1px;
+  background:linear-gradient(180deg,transparent 0%,var(--vermilion) 5%,var(--vermilion) 95%,transparent 100%);
+  transform:translateX(-50%);
+}
+.tl-item{
+  display:grid;grid-template-columns:1fr auto 1fr;gap:0;
+  margin-bottom:80px;position:relative;
+  opacity:0;transform:translateY(20px);
+  transition:all .8s;
+}
+.tl-item.visible{opacity:1;transform:translateY(0)}
+.tl-item:nth-child(odd) .tl-content{text-align:right;padding-right:50px}
+.tl-item:nth-child(even) .tl-content{text-align:left;padding-left:50px;grid-column:3}
+.tl-item:nth-child(even) .tl-spacer{grid-column:1}
+.tl-dot{
+  width:16px;height:16px;border-radius:50%;
+  background:var(--vermilion);border:4px solid var(--paper);
+  box-shadow:0 0 0 2px var(--vermilion);
+  position:relative;z-index:2;grid-column:2;
+  align-self:start;margin-top:8px;
+}
+.tl-dot::before{
+  content:"";position:absolute;inset:-10px;border-radius:50%;
+  background:rgba(168,45,42,.2);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(2);opacity:0}}
+.tl-year{
+  font-family:"Italiana",serif;font-size:32px;color:var(--vermilion);
+  letter-spacing:.05em;line-height:1;margin-bottom:10px;
+}
+.tl-title{
+  font-family:"Ma Shan Zheng",serif;font-size:24px;color:var(--ink);
+  margin-bottom:10px;letter-spacing:.05em;
+}
+.tl-text{
+  font-family:"LXGW WenKai TC",serif;font-size:15px;font-weight:400;
+  color:var(--ink-soft);line-height:1.9;
+  letter-spacing:.04em;
+}
+
+/* ============== 侨批展示 ============== */
+.letters{background:var(--paper-deep);position:relative}
+.letter-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;margin-top:40px;
+}
+.letter-card{
+  background:var(--paper);
+  border:1px solid var(--paper-edge);
+  padding:36px 32px 30px;position:relative;
+  cursor:pointer;
+  transition:all .5s;
+  box-shadow:0 4px 20px var(--shadow);
+  overflow:hidden;
+}
+.letter-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--vermilion) 0%,var(--gold) 50%,var(--vermilion) 100%);
+}
+.letter-card::after{
+  content:"";position:absolute;inset:8px;
+  border:1px dashed var(--paper-edge);
+  pointer-events:none;
+}
+.letter-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 40px rgba(58,42,31,.2);
+}
+.letter-meta{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:18px;position:relative;z-index:1;
+}
+.letter-from{
+  font-family:"Ma Shan Zheng",serif;font-size:22px;color:var(--vermilion);
+  letter-spacing:.05em;
+}
+.letter-from .en{
+  display:block;font-family:"Italiana",serif;font-size:10px;
+  color:var(--ink-soft);letter-spacing:.3em;margin-top:4px;
+}
+.letter-date{
+  font-family:"Italiana",serif;font-size:13px;color:var(--ink-soft);
+  letter-spacing:.1em;
+}
+.letter-title{
+  font-family:"Ma Shan Zheng",serif;font-size:18px;
+  color:var(--ink);margin-bottom:14px;letter-spacing:.05em;
+  position:relative;z-index:1;
+}
+.letter-body{
+  font-family:"LXGW WenKai TC",serif;font-size:15px;font-weight:400;
+  color:var(--ink);line-height:2.1;letter-spacing:.04em;
+  max-height:0;overflow:hidden;transition:max-height .8s ease;
+  position:relative;z-index:1;
+}
+.letter-card.open .letter-body{max-height:1000px}
+.letter-body p{margin-bottom:10px}
+.letter-body .sign{
+  text-align:right;margin-top:14px;font-style:italic;color:var(--vermilion);
+}
+.letter-tag{
+  display:inline-block;margin-top:18px;
+  padding:4px 12px;background:rgba(168,45,42,.08);color:var(--vermilion);
+  font-size:11px;letter-spacing:.2em;font-family:"Italiana",serif;
+  position:relative;z-index:1;
+  transition:all .3s;
+}
+.letter-card:hover .letter-tag{background:var(--vermilion);color:var(--paper)}
+.letter-corner{
+  position:absolute;bottom:0;right:0;width:50px;height:50px;
+  background:linear-gradient(135deg,transparent 50%,var(--vermilion) 50%);
+  opacity:.15;
+}
+
+/* ============== 历史背景 ============== */
+.history{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.history-card{
+  background:var(--paper);
+  border:1px solid var(--paper-edge);
+  padding:50px 40px;position:relative;
+  box-shadow:0 4px 20px var(--shadow);
+}
+.history-card .num{
+  font-family:"Italiana",serif;font-size:80px;
+  color:var(--vermilion);opacity:.2;line-height:1;
+  position:absolute;top:20px;right:30px;
+  font-weight:400;
+}
+.history-card h3{
+  font-family:"Ma Shan Zheng",serif;font-size:36px;
+  color:var(--ink);margin-bottom:6px;letter-spacing:.05em;
+}
+.history-card h3 .en{
+  display:block;font-family:"Italiana",serif;font-size:14px;
+  color:var(--ink-soft);letter-spacing:.4em;margin-top:6px;
+}
+.history-card .quote{
+  font-family:"LXGW WenKai TC",serif;font-size:18px;font-weight:400;
+  color:var(--vermilion);font-style:italic;letter-spacing:.1em;
+  margin:24px 0;border-left:3px solid var(--vermilion);
+  padding-left:18px;line-height:2;
+}
+.history-card p{
+  font-family:"LXGW WenKai TC",serif;font-size:15.5px;font-weight:400;
+  color:var(--ink);line-height:2.1;margin-bottom:14px;
+  letter-spacing:.04em;
+}
+.history-card .data-list{
+  list-style:none;margin:20px 0;
+}
+.history-card .data-list li{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 0;border-bottom:1px dashed var(--paper-edge);
+  font-family:"LXGW WenKai TC",serif;font-size:14.5px;font-weight:400;
+  color:var(--ink);letter-spacing:.04em;
+}
+.history-card .data-list li::before{
+  content:"";width:6px;height:6px;border-radius:50%;
+  background:var(--vermilion);margin-top:10px;flex-shrink:0;
+}
+.history-card .data-list strong{
+  color:var(--vermilion);font-family:"Italiana",serif;
+  font-size:18px;letter-spacing:.05em;min-width:100px;
+  font-weight:400;display:inline-block;
+}
+
+/* ============== 人物群像 ============== */
+.people-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;margin-top:40px;
+}
+.person-card{
+  background:var(--paper);
+  border:1px solid var(--paper-edge);
+  padding:0;position:relative;overflow:hidden;
+  transition:all .5s;
+  box-shadow:0 4px 20px var(--shadow);
+}
+.person-card:hover{transform:translateY(-6px)}
+.person-portrait{
+  width:100%;height:280px;
+  background:linear-gradient(135deg,#d9c89c 0%,#b58a3a 100%);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.person-portrait svg{width:60%;height:60%;opacity:.5}
+.person-info{padding:28px 24px}
+.person-role{
+  font-family:"Italiana",serif;font-size:11px;letter-spacing:.4em;
+  color:var(--vermilion);margin-bottom:8px;
+}
+.person-name{
+  font-family:"Ma Shan Zheng",serif;font-size:28px;
+  color:var(--ink);margin-bottom:4px;letter-spacing:.05em;
+}
+.person-name-en{
+  font-family:"Italiana",serif;font-size:13px;letter-spacing:.3em;
+  color:var(--ink-soft);margin-bottom:16px;
+}
+.person-desc{
+  font-family:"LXGW WenKai TC",serif;font-size:14px;font-weight:400;
+  color:var(--ink-soft);line-height:2;letter-spacing:.04em;
+}
+
+/* ============== 照片画廊 ============== */
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(12,1fr);
+  grid-auto-rows:120px;gap:14px;margin-top:40px;
+}
+.gallery-item{
+  position:relative;overflow:hidden;
+  cursor:pointer;
+  background:var(--paper-deep);
+  border:1px solid var(--paper-edge);
+  transition:transform .5s,box-shadow .5s;
+}
+.gallery-item:hover{transform:scale(1.02);box-shadow:0 10px 30px rgba(58,42,31,.25);z-index:2}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.4) 100%);
+  pointer-events:none;
+}
+.gallery-item .label{
+  position:absolute;bottom:12px;left:14px;right:14px;
+  color:#f0e6cf;font-family:"LXGW WenKai TC",serif;
+  font-size:12px;letter-spacing:.18em;z-index:2;font-weight:400;
+  text-shadow:0 2px 6px rgba(0,0,0,.4);
+}
+.gallery-1{grid-column:span 5;grid-row:span 3}
+.gallery-2{grid-column:span 4;grid-row:span 2}
+.gallery-3{grid-column:span 3;grid-row:span 3}
+.gallery-4{grid-column:span 4;grid-row:span 2}
+.gallery-5{grid-column:span 3;grid-row:span 2}
+.gallery-6{grid-column:span 5;grid-row:span 2}
+.gallery-7{grid-column:span 4;grid-row:span 2}
+.gallery-8{grid-column:span 4;grid-row:span 2}
+.gallery-9{grid-column:span 4;grid-row:span 3}
+.gallery-10{grid-column:span 4;grid-row:span 2}
+.gallery-11{grid-column:span 4;grid-row:span 2}
+.gallery-12{grid-column:span 4;grid-row:span 2}
+
+/* Lightbox */
+.lightbox{
+  position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;
+  display:none;align-items:center;justify-content:center;
+  padding:40px;
+  opacity:0;transition:opacity .3s;
+}
+.lightbox.show{display:flex;opacity:1}
+.lightbox img{max-width:90%;max-height:90vh;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lightbox-close{
+  position:absolute;top:30px;right:30px;
+  width:50px;height:50px;border-radius:50%;
+  background:rgba(255,255,255,.1);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;backdrop-filter:blur(10px);
+  transition:all .3s;
+}
+.lightbox-close:hover{background:rgba(255,255,255,.2);transform:rotate(90deg)}
+.lightbox-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:60px;height:60px;border-radius:50%;
+  background:rgba(255,255,255,.1);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;backdrop-filter:blur(10px);
+  transition:all .3s;
+}
+.lightbox-nav:hover{background:rgba(255,255,255,.2)}
+.lightbox-prev{left:30px}
+.lightbox-next{right:30px}
+.lightbox-caption{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  color:#f0e6cf;font-family:"LXGW WenKai TC",serif;
+  font-size:14px;letter-spacing:.2em;text-align:center;
+  max-width:80%;
+}
+
+/* ============== 主题金句 ============== */
+.theme-section{
+  text-align:center;padding:140px 40px;
+  background:linear-gradient(180deg,var(--paper) 0%,var(--paper-deep) 100%);
+  position:relative;overflow:hidden;
+}
+.theme-section::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at center,rgba(168,45,42,.06) 0%,transparent 60%);
+  pointer-events:none;
+}
+.theme-quote{
+  font-family:"Ma Shan Zheng",serif;
+  font-size:clamp(48px,7vw,96px);
+  color:var(--vermilion);
+  letter-spacing:.15em;line-height:1.3;
+  position:relative;display:inline-block;
+}
+.theme-quote .small{font-size:.4em;display:block;color:var(--ink-soft);margin-top:20px;letter-spacing:.2em}
+.theme-quote::before,.theme-quote::after{
+  content:"";display:inline-block;width:60px;height:1px;
+  background:var(--vermilion);vertical-align:middle;margin:0 30px;opacity:.5;
+}
+.theme-en{
+  font-family:"Italiana",serif;font-size:22px;
+  letter-spacing:.4em;color:var(--ink-soft);
+  margin-top:30px;font-style:italic;
+}
+
+/* ============== 观影感受 ============== */
+.feel-section{max-width:880px;margin:0 auto}
+.feel-section .feel-text{
+  font-family:"LXGW WenKai TC","Noto Serif SC",serif;
+  font-size:17px;color:var(--ink);line-height:2.3;
+  letter-spacing:.05em;font-weight:400;
+}
+.feel-section .feel-text p{margin-bottom:24px}
+.feel-section .feel-text .em{color:var(--vermilion);font-weight:500}
+.feel-section .feel-text .quote{
+  display:block;padding:24px 30px;margin:30px 0;
+  background:rgba(168,45,42,.04);
+  border-left:3px solid var(--vermilion);
+  font-style:italic;color:var(--vermilion-deep);
+  font-size:18px;
+}
+.feel-section .signature{
+  text-align:right;margin-top:60px;
+  font-family:"Ma Shan Zheng",serif;font-size:20px;
+  color:var(--ink);letter-spacing:.1em;
+}
+.feel-section .signature .en{
+  display:block;font-family:"Italiana",serif;font-size:12px;
+  color:var(--ink-soft);letter-spacing:.3em;margin-top:6px;
+}
+
+/* ============== 结语 ============== */
+.epilogue{
+  text-align:center;padding:160px 40px 100px;
+  background:linear-gradient(180deg,var(--paper) 0%,var(--paper-deep) 100%);
+  position:relative;
+}
+.epilogue-mark{
+  display:inline-block;width:60px;height:60px;
+  border:1px solid var(--vermilion);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 40px;
+  font-family:"Ma Shan Zheng",serif;font-size:18px;
+  color:var(--vermilion);transform:rotate(45deg);
+}
+.epilogue-mark span{transform:rotate(-45deg)}
+.epilogue-text{
+  font-family:"LXGW WenKai TC",serif;
+  font-size:clamp(20px,2.4vw,28px);font-weight:400;
+  color:var(--ink);max-width:680px;margin:0 auto 30px;
+  line-height:2.2;letter-spacing:.12em;
+}
+.epilogue-text .em{color:var(--vermilion)}
+.epilogue-credit{
+  font-family:"Italiana",serif;font-size:12px;letter-spacing:.4em;
+  color:var(--ink-soft);margin-top:60px;
+}
+.epilogue-credit a{color:var(--vermilion);border-bottom:1px solid var(--vermilion)}
+
+/* ============== 滚动条 ============== */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--paper-deep)}
+::-webkit-scrollbar-thumb{background:var(--ink-soft);border-radius:5px}
+::-webkit-scrollbar-thumb:hover{background:var(--vermilion)}
+
+/* ============== 响应式 ============== */
+@media (max-width:900px){
+  .nav{padding:14px 20px}
+  .nav.scrolled{padding:10px 20px}
+  .nav-links{display:none}
+  .nav-brand .en{display:none}
+  .container{padding:0 24px}
+  section{padding:80px 0}
+  .section-head h2{font-size:42px}
+  .hero{padding:120px 24px 80px}
+  .chapter{grid-template-columns:1fr;gap:30px;margin-bottom:100px}
+  .chapter:nth-child(even){direction:ltr}
+  .chapter-img{height:300px}
+  .timeline-line{left:24px}
+  .tl-item{grid-template-columns:24px 1fr;gap:0}
+  .tl-item:nth-child(odd) .tl-content,.tl-item:nth-child(even) .tl-content{text-align:left;padding-left:30px;padding-right:0;grid-column:2}
+  .tl-item:nth-child(even) .tl-spacer{display:none}
+  .tl-dot{grid-column:1;justify-self:center}
+  .history{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(6,1fr);grid-auto-rows:100px}
+  .gallery-1,.gallery-2,.gallery-3,.gallery-4,.gallery-5,.gallery-6,.gallery-7,.gallery-8,.gallery-9,.gallery-10,.gallery-11,.gallery-12{grid-column:span 3;grid-row:span 2}
+  .theme-quote::before,.theme-quote::after{display:none}
+}
+@media (max-width:600px){
+  .hero-title{font-size:54px}
+  .hero-sub{font-size:14px}
+  .letter-grid{grid-template-columns:1fr}
+  .section-head h2{font-size:36px}
+  .chapter-title{font-size:38px}
+}
+</style>
+</head>
+<body>
+
+<!-- 木棉花飘落 -->
+<div class="kapok" id="kapok"></div>
+
+<!-- 顶部导航 -->
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav-brand">
+    <span class="cn">给阿嬷</span>
+    <span class="en">DEAR&nbsp;YOU</span>
+  </a>
+  <div class="nav-links">
+    <a href="#story">故事</a>
+    <a href="#timeline">时间线</a>
+    <a href="#letters">侨批</a>
+    <a href="#people">人物</a>
+    <a href="#history">历史</a>
+    <a href="#gallery">光影</a>
+    <a href="#feel">观感</a>
+  </div>
+  <button class="nav-music" id="musicBtn" title="音乐开关">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
+    </svg>
+    <div class="bar" style="position:absolute"><span></span><span></span><span></span><span></span></div>
+  </button>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-stamp">给阿嬷<br>·情书·</div>
+    <div class="hero-eyebrow">A&nbsp;FILM&nbsp;BY&nbsp;LAN&nbsp;HONGCHUN&nbsp;·&nbsp;2026</div>
+    <h1 class="hero-title">给<span class="small-cn">阿嬷</span>的情书</h1>
+    <div class="hero-title-en">DEAR&nbsp;&nbsp;YOU</div>
+    <p class="hero-sub">
+      一封侨批，瞒了十八年，<br>
+      成全了<span class="quote">跨越山海、半世深情</span>。<br>
+      纸短情长，有多长？<br>
+      长到一封信要走好几个月，长到<span class="quote">一生只够爱一个人</span>。
+    </p>
+    <a href="#story" class="hero-cta">
+      展开这封情书
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <div class="hero-tagline">
+    SCROLL
+    <span class="line"></span>
+  </div>
+</header>
+
+<!-- 音频（自动播放，需用户先交互；提供按钮开关） -->
+<audio id="bgm" loop preload="auto" crossorigin="anonymous">
+  <source src="file:///D:/Music/月下煮茶钢琴曲.MP3" type="audio/mpeg">
+  <source src="../Music/月下煮茶钢琴曲.MP3" type="audio/mpeg">
+</audio>
+
+<!-- 卷首语 -->
+<section class="prologue" style="padding:100px 40px 60px">
+  <p class="prologue-quote">
+    在那个没有手机、没有网络的年代，<br>
+    一封侨批从暹罗到潮汕，<br>
+    走的是漫长的海上航路。<br>
+    也正因为慢，<br>
+    写下的每一字都是仔细推敲的，<br>
+    吐露的每一丝情义都是<span style="color:var(--vermilion)">欲说还休</span>的。
+  </p>
+  <span class="prologue-mark"></span>
+  <p class="prologue-by">A&nbsp;&nbsp;SLOW&nbsp;&nbsp;LOVE&nbsp;&nbsp;LETTER</p>
+</section>
+
+<main id="story">
+<!-- 故事 -->
+<section class="story">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">PART&nbsp;I&nbsp;·&nbsp;THE&nbsp;STORY</div>
+      <h2>故&nbsp;&nbsp;事<span class="en">The&nbsp;Story</span></h2>
+      <p class="lead">从前慢。一封侨批要走好几个月，<br>却装得下半生离索与重逢。</p>
+    </div>
+
+    <!-- 第一章 -->
+    <div class="chapter">
+      <div class="chapter-text-col">
+        <div class="chapter-num">01</div>
+        <span class="chapter-tag">壹 · 1948 · 离家</span>
+        <h3 class="chapter-title">一封误会的开端</h3>
+        <span class="chapter-title-en">CHAPTER ONE · FAREWELL</span>
+        <div class="chapter-text">
+          <p>1948年，潮汕。<strong class="em">郑木生</strong>为躲避抓壮丁，连夜逃离故乡，登上了去暹罗（今泰国）的红头船。</p>
+          <p>他留下妻子<strong class="em">叶淑柔</strong>，和三个年幼的孩子。最小的那个，刚会爬。</p>
+          <span class="quote">"暹罗没有春天，热得要死。"<br>可他还是要去。</span>
+          <p>千里之外的异国，他用一辆破三轮车踩出了全部的求生之路。一双磨破的鞋，粘了又坏，坏了又粘；他攒了好几年钱，预备做回家的盘缠，却在一场大火里为救同乡的父女，<strong class="em">全部化为灰烬</strong>。</p>
+        </div>
+      </div>
+      <div class="chapter-img">
+        <img src="D:/Ama/Pictures/663b0f527fc547d5b7e6fa944169f032.webp" alt="送别" loading="lazy">
+        <div class="caption">第壹章 · 一别两宽，山海相隔</div>
+        <div class="seal">壹</div>
+      </div>
+    </div>
+
+    <!-- 第二章 -->
+    <div class="chapter">
+      <div class="chapter-text-col">
+        <div class="chapter-num">02</div>
+        <span class="chapter-tag">贰 · 暹罗的苦与甜</span>
+        <h3 class="chapter-title">苦是日子的底色，<br>甜藏在信里</h3>
+        <span class="chapter-title-en">CHAPTER TWO · BITTER & SWEET</span>
+        <div class="chapter-text">
+          <p>木生不识字，每一封寄回家的"批"都要请同乡代笔。可他几乎<strong class="em">每封信都以"吾妻淑柔，展信安康"开头</strong>。剩下的，是简明扼要的交代。</p>
+          <p>在那些平安批里，木生对自己的苦难<strong class="em">只字不提</strong>，只说"一切安好，勿念"。这是那个时代无数"下南洋"华侨的共同写照：<strong class="em">报喜不报忧，把所有的苦咽进肚里，把仅有的甜寄回家</strong>。</p>
+          <span class="quote">"暹罗日猛，通身热热。<br>速寄相片来，以解相思之苦。"</span>
+        </div>
+      </div>
+      <div class="chapter-img">
+        <img src="D:/Ama/Pictures/87e69ad9f1e14ef08a84b3320ea6a2d0.webp" alt="稻田与远方" loading="lazy">
+        <div class="caption">第贰章 · 苦日子里的那点甜</div>
+        <div class="seal">贰</div>
+      </div>
+    </div>
+
+    <!-- 第三章 -->
+    <div class="chapter">
+      <div class="chapter-text-col">
+        <div class="chapter-num">03</div>
+        <span class="chapter-tag">叁 · 淑柔的等待</span>
+        <h3 class="chapter-title">一个人，<br>扛起一个家</h3>
+        <span class="chapter-title-en">CHAPTER THREE · WAITING</span>
+        <div class="chapter-text">
+          <p>淑柔也不说自己的苦，只在信里写"家中一切安好，勿念"。她把思念藏在最朴素的日常里——</p>
+          <span class="quote">
+            "冬至将至，虽你未能归，<br>
+            <strong class="em">冬至丸亦留你一份</strong>。"<br><br>
+            "打了新被棉，眠床烧烧，<br>
+            不畏天寒，你免挂念。<br>
+            <strong class="em">待你归来，再一同看正月的花灯</strong>。"
+          </span>
+          <p>那个温柔的潮汕女人，用最克制的笔触，把日子过成了一首又一首的<strong class="em">平安歌</strong>。</p>
+        </div>
+      </div>
+      <div class="chapter-img">
+        <img src="D:/Ama/Pictures/a337cdd8a0f1454d9cab4855c13e5348.webp" alt="收信" loading="lazy">
+        <div class="caption">第叁章 · 番薯与偷食的深夜</div>
+        <div class="seal">叁</div>
+      </div>
+    </div>
+
+    <!-- 第四章 -->
+    <div class="chapter">
+      <div class="chapter-text-col">
+        <div class="chapter-num">04</div>
+        <span class="chapter-tag">肆 · 1960 · 七夕</span>
+        <h3 class="chapter-title">那一夜，<br>海上没有月光</h3>
+        <span class="chapter-title-en">CHAPTER FOUR · A SUMMER NIGHT</span>
+        <div class="chapter-text">
+          <p>1960年七夕夜，为抵抗劫掠、救同胞，木生在海上勇斗歹徒。<strong class="em">重伤后落水身亡，尸骨无存</strong>。</p>
+          <p>而那一夜，远在潮汕的淑柔梦见木生归来。她在给他的信里写——</p>
+          <span class="quote">
+            "七夕当夜，你衣锦归来，<br>
+            仍是少年模样。<br>
+            梦醒行至寨门前，<br>
+            <strong class="em">闻溪水潺潺，方觉夜深</strong>。"
+          </span>
+          <p>有些告别，是没有来得及说出口的。</p>
+        </div>
+      </div>
+      <div class="chapter-img">
+        <img src="D:/Ama/Pictures/2675fe53f6cf40d499d0173e3a2240f0.webp" alt="月与归人" loading="lazy">
+        <div class="caption">第肆章 · 月是故乡明</div>
+        <div class="seal">肆</div>
+      </div>
+    </div>
+
+    <!-- 第五章 -->
+    <div class="chapter">
+      <div class="chapter-text-col">
+        <div class="chapter-num">05</div>
+        <span class="chapter-tag">伍 · 18年的代笔</span>
+        <h3 class="chapter-title">替一个死去的人，<br>继续爱下去</h3>
+        <span class="chapter-title-en">CHAPTER FIVE · EIGHTEEN YEARS</span>
+        <div class="chapter-text">
+          <p>谢南枝，本打算寄一封讣告。但她在银信局的柜台前，看到父亲焦急写信赎回被卖的女儿，看到青年凑不出寄钱回家，同乡把散钱塞进他掌心——</p>
+          <p>她把那封讣告<strong class="em">收回了</strong>，换成了以木生名义的平安批：</p>
+          <span class="quote">
+            "行船入夜，恰江上升明月，<br>
+            圆如玉坠，仿若身在故乡，<br>
+            似与你<strong class="em">并肩共赏</strong>。<br>
+            江海万里，心中念你，便不觉遥远。"
+          </span>
+          <p>南枝一人扛起了<strong class="em">养两个家</strong>的重担。这是淑柔的信里"等一个永远不会回来的人"的坚守，也是南枝信里"替一个死去的人继续爱下去"的承诺。</p>
+        </div>
+      </div>
+      <div class="chapter-img">
+        <img src="D:/Ama/Pictures/43e6de558a2c4fc99ae86e97201adb51.webp" alt="代笔" loading="lazy">
+        <div class="caption">第伍章 · 提笔，写下第一封代笔信</div>
+        <div class="seal">伍</div>
+      </div>
+    </div>
+
+    <!-- 第六章 -->
+    <div class="chapter">
+      <div class="chapter-text-col">
+        <div class="chapter-num">06</div>
+        <span class="chapter-tag">陆 · 错过的坦白</span>
+        <h3 class="chapter-title">一封被河水冲毁的信，<br>半生再无相认</h3>
+        <span class="chapter-title-en">CHAPTER SIX · A LOST LETTER</span>
+        <div class="chapter-text">
+          <p>18年后，南枝寄出那封坦白真相的长信。却恰逢台风天，邮差从河里捞起时，信上的字迹已被水冲得<strong class="em">无法辨认</strong>，只剩下一张照片——木生、南枝和一群孩子的合影。</p>
+          <p>淑柔只收到照片。她以为，远渡重洋的丈夫已在暹罗<strong class="em">另组家庭、生儿育女</strong>。</p>
+          <p>她没有歇斯底里地控诉"负心"，只是将照片放于身旁小几上，轻笑一声——</p>
+          <span class="quote">"现在才告诉我。"</span>
+          <p>她干脆利落地搬家、断联，不允许子女再与木生有任何联系。她对木生的爱是<strong class="em">赤诚的、骄傲的、刚烈的</strong>。</p>
+        </div>
+      </div>
+      <div class="chapter-img">
+        <img src="D:/Ama/Pictures/aa011daec99846e9b7669cdc706c785b.webp" alt="南枝写坦白信" loading="lazy">
+        <div class="caption">第陆章 · 被冲毁的十八年</div>
+        <div class="seal">陆</div>
+      </div>
+    </div>
+
+    <!-- 第七章 -->
+    <div class="chapter">
+      <div class="chapter-text-col">
+        <div class="chapter-num">07</div>
+        <span class="chapter-tag">柒 · 真相大白</span>
+        <h3 class="chapter-title">晓伟的寻亲，<br>成了他的"成长之旅"</h3>
+        <span class="chapter-title-en">CHAPTER SEVEN · THE GRANDSON</span>
+        <div class="chapter-text">
+          <p>孙子晓伟，债务缠身，本想去泰国找"富得流油的阿公分几百万"。可这趟寻亲之旅，最后竟成了他的<strong class="em">成长之旅</strong>。</p>
+          <p>当孙子在视频电话里告诉淑柔全部真相时，她没有崩溃大哭，也没有感激涕零。她只是转身走入厨房，说——</p>
+          <span class="quote">"橄榄菜凉了，可以装好带给南枝了。"</span>
+        </div>
+      </div>
+      <div class="chapter-img">
+        <img src="D:/Ama/Pictures/ef8c2d40dff74725aa8d05285d3d8a93.webp" alt="祖孙" loading="lazy">
+        <div class="caption">第柒章 · 一个家族的和解</div>
+        <div class="seal">柒</div>
+      </div>
+    </div>
+
+    <!-- 第八章 -->
+    <div class="chapter">
+      <div class="chapter-text-col">
+        <div class="chapter-num">08</div>
+        <span class="chapter-tag">捌 · 见面</span>
+        <h3 class="chapter-title">木棉花开，<br>我接你回家</h3>
+        <span class="chapter-title-en">CHAPTER EIGHT · DEAR YOU</span>
+        <div class="chapter-text">
+          <p>几天后，<strong class="em">80多岁的淑柔</strong>坐上飞往泰国的飞机，去到了木生生前"需要坐一个月的船"才能抵达的土地。</p>
+          <p>她接南枝，也接木生回家。</p>
+          <p>两个女人的第一次相见，没有激动不已、痛哭流涕：</p>
+          <span class="quote">
+            淑柔给满头银发且已失智的南枝<br>
+            塞了一颗从家乡带去的橄榄，说：<br>
+            "<strong class="em">先苦后甘</strong>。"<br><br>
+            而南枝递给淑柔一朵木棉花，<br>
+            问她："寄你的咸猪肉收到了吗？"
+          </span>
+          <p>淑柔答："收到了，好吃。"<br>南枝说："好吃我就再给你寄。"</p>
+        </div>
+      </div>
+      <div class="chapter-img">
+        <img src="D:/Ama/Pictures/f098484da5c14dc99b904b1dbb87dcd5.webp" alt="相见" loading="lazy">
+        <div class="caption">第捌章 · 我来带你回家</div>
+        <div class="seal">捌</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<!-- 时间线 -->
+<section id="timeline" class="timeline-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">PART&nbsp;II&nbsp;·&nbsp;TIMELINE</div>
+      <h2>影&nbsp;片&nbsp;时&nbsp;间&nbsp;线<span class="en">A&nbsp;Timeline&nbsp;Across&nbsp;the&nbsp;Sea</span></h2>
+      <p class="lead">从1948到当下，<br>三代人的离散、误解、相守与重逢。</p>
+    </div>
+
+    <div class="timeline-wrap">
+      <div class="timeline-line"></div>
+
+      <div class="tl-item">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">1948</div>
+          <div class="tl-title">远行 · 木生下南洋</div>
+          <div class="tl-text">为躲避抓壮丁，郑木生离开潮汕，远赴暹罗。留下淑柔与三个年幼的孩子——最小的那个，刚会爬。</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">1948—1960</div>
+          <div class="tl-title">12年书信 · 苦与甜</div>
+          <div class="tl-text">木生踩三轮、做苦工，攒钱赎船票。每隔数月，一封盖着"暹罗"邮戳的侨批漂洋而来。每封以"吾妻淑柔，展信安康"开头，剩下的是克制的家常。</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">1948 冬</div>
+          <div class="tl-title">旅馆大火 · 救人入狱</div>
+          <div class="tl-text">木生冲入火场救出南枝父女，毕生积蓄化为灰烬。又因打伤纵火者被判入狱2年。归家之约被无限期延后——这个恩情，南枝记了一辈子。</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">1952</div>
+          <div class="tl-title">银信局 · 善念萌芽</div>
+          <div class="tl-text">大字不识的木生请同乡狄功帮忙代笔。他在旅馆里给潮汕孩子教中文。这件事，后来成了改变南枝一生的转折。</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">1960 · 七夕</div>
+          <div class="tl-title">海上 · 木生殉难</div>
+          <div class="tl-text">那一夜，淑柔梦见木生归来。醒来才知，江海万里，他已长眠海底，尸骨无存。"七夕当夜，你衣锦归来，仍是少年模样。"</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">1960—1978</div>
+          <div class="tl-title">18年 · 一封封平安批</div>
+          <div class="tl-text">南枝在银信局柜台前收回了讣告。她提笔以木生之名，替他继续写下去。"行船入夜，恰江上升明月，圆如玉坠，仿若身在故乡。"</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">1978</div>
+          <div class="tl-title">台风天 · 错过的坦白</div>
+          <div class="tl-text">南枝寄出的坦白信被台风吹落河中，字迹冲毁，只剩一张木生与她和一群孩子的合影。淑柔误以为丈夫在南洋另组家庭，断联半生。</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">2010s</div>
+          <div class="tl-title">寻亲 · 孙子晓伟</div>
+          <div class="tl-text">孙子晓伟赴泰国寻亲，揭开了尘封的真相。这是阿嬷的故事，也是他自己的成长之旅——"做人要有情有义"。</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-year">今日</div>
+          <div class="tl-title">相见 · 先苦后甘</div>
+          <div class="tl-text">80多岁的淑柔飞往泰国。失智的南枝递给她一朵木棉花，问："寄你的咸猪肉收到了吗？"淑柔答："收到了，好吃。"</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 侨批展示 -->
+<section id="letters" class="letters">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">PART&nbsp;III&nbsp;·&nbsp;THE&nbsp;LETTERS</div>
+      <h2>侨&nbsp;&nbsp;批<span class="en">Letters&nbsp;Across&nbsp;the&nbsp;Sea</span></h2>
+      <p class="lead">"批"在潮汕话里是"信"。<br>这是银信合一的家书，是装在信封里的半生。</p>
+    </div>
+
+    <div class="letter-grid">
+
+      <article class="letter-card" data-letter>
+        <div class="letter-meta">
+          <div class="letter-from">木生·致淑柔<span class="en">ZHENG&nbsp;MUSHENG</span></div>
+          <div class="letter-date">1948 · 初到暹罗</div>
+        </div>
+        <div class="letter-title">初到暹罗 · 报平安</div>
+        <div class="letter-body">
+          <p>吾妻淑柔，展信安康。</p>
+          <p>随信寄银二十元，以补家用。</p>
+          <p>我在暹罗一切安好，勿念。</p>
+          <p>家中老小，劳你多费心。</p>
+          <p>愿妻儿平安，岁月静好。</p>
+          <p class="sign">—— 夫木生手书</p>
+        </div>
+        <span class="letter-tag">展开此信</span>
+        <div class="letter-corner"></div>
+      </article>
+
+      <article class="letter-card" data-letter>
+        <div class="letter-meta">
+          <div class="letter-from">木生·致淑柔<span class="en">ZHENG&nbsp;MUSHENG</span></div>
+          <div class="letter-date">1952 · 暹罗炎热</div>
+        </div>
+        <div class="letter-title">暹罗日猛 · 速寄相片</div>
+        <div class="letter-body">
+          <p>暹罗日猛，通身热热。</p>
+          <p>速寄相片来，以解相思之苦。</p>
+          <p>淑柔吾妻，付去港币五十元。我一切平安，你免挂念。</p>
+          <p class="sign">—— 夫木生</p>
+        </div>
+        <span class="letter-tag">展开此信</span>
+        <div class="letter-corner"></div>
+      </article>
+
+      <article class="letter-card" data-letter>
+        <div class="letter-meta">
+          <div class="letter-from">木生·致淑柔<span class="en">ZHENG&nbsp;MUSHENG</span></div>
+          <div class="letter-date">1956 · 八载有余</div>
+        </div>
+        <div class="letter-title">三轮换货船 · 团圆可盼</div>
+        <div class="letter-body">
+          <p>淑柔吾妻，见信安康。</p>
+          <p>与妻一别，八载有余，日思夜想，归期遥遥。</p>
+          <p>唯化思念作拼搏，凭勤俭来立业，今把三轮换货船，终得扬帆起航。</p>
+          <p>暹罗虽远，心有所寄，身若比邻。</p>
+          <p><strong style="color:var(--vermilion)">江海有岸，团圆可盼。</strong></p>
+          <p class="sign">—— 夫木生</p>
+        </div>
+        <span class="letter-tag">展开此信</span>
+        <div class="letter-corner"></div>
+      </article>
+
+      <article class="letter-card" data-letter>
+        <div class="letter-meta">
+          <div class="letter-from">淑柔·致木生<span class="en">YE&nbsp;SHUROU</span></div>
+          <div class="letter-date">1949 · 番薯与深夜</div>
+        </div>
+        <div class="letter-title">三个孩子的笑声</div>
+        <div class="letter-body">
+          <p>吾夫木生，</p>
+          <p>信件及家用已悉数收到，家中诸事皆顺，庄稼长势尤好，<strong style="color:var(--vermilion)">番薯肥美壮实</strong>。</p>
+          <p>昨日将其烤作晚餐，孩子们十分喜爱。</p>
+          <p>大弟最馋嘴，半夜摸黑，又偷啃番薯，声响吵醒我们。大妹气得直跺脚，细弟更是严厉，强开其口，务必查明罪证，终于水落石出。</p>
+          <p>不过多时，三人又嬉闹起来，待鸡鸣声响，方才睡去。</p>
+          <p>望你见此，定能感同身受，因这三个天真可爱的孩子，倍感幸福。</p>
+          <p class="sign">—— 妻，淑柔</p>
+        </div>
+        <span class="letter-tag">展开此信</span>
+        <div class="letter-corner"></div>
+      </article>
+
+      <article class="letter-card" data-letter>
+        <div class="letter-meta">
+          <div class="letter-from">淑柔·致木生<span class="en">YE&nbsp;SHUROU</span></div>
+          <div class="letter-date">冬至 · 留你一份</div>
+        </div>
+        <div class="letter-title">冬至丸 · 留你一份</div>
+        <div class="letter-body">
+          <p>木生吾夫，</p>
+          <p>五十元收到。家中一切安好，勿念。</p>
+          <p>冬至将至，<strong style="color:var(--vermilion)">虽你未能归，冬至丸亦留你一份</strong>。</p>
+          <p>打了新被棉，眠床烧烧，不畏天寒，你免挂念。</p>
+          <p><strong style="color:var(--vermilion)">待你归来，再一同看正月的花灯。</strong></p>
+          <p class="sign">—— 妻，淑柔</p>
+        </div>
+        <span class="letter-tag">展开此信</span>
+        <div class="letter-corner"></div>
+      </article>
+
+      <article class="letter-card" data-letter>
+        <div class="letter-meta">
+          <div class="letter-from">淑柔·致木生<span class="en">YE&nbsp;SHUROU</span></div>
+          <div class="letter-date">1960 · 七夕</div>
+        </div>
+        <div class="letter-title">七夕梦回 · 少年模样</div>
+        <div class="letter-body">
+          <p>吾夫木生，展信佳。</p>
+          <p>一百元已收到。</p>
+          <p>七月初七，大妹出花园，已亭亭玉立；大弟和小弟亦个头出挑，健朗聪慧。</p>
+          <p>见子女茁壮成长，欣慰非常，这是你我共修之骄傲。</p>
+          <p><strong style="color:var(--vermilion)">七夕当夜，你衣锦归来，仍是少年模样。</strong></p>
+          <p>梦醒行至寨门前，闻溪水潺潺，方觉夜深。</p>
+          <p>念你安康，好梦，即已知足。</p>
+          <p class="sign">—— 妻淑柔字</p>
+        </div>
+        <span class="letter-tag">展开此信</span>
+        <div class="letter-corner"></div>
+      </article>
+
+      <article class="letter-card" data-letter>
+        <div class="letter-meta">
+          <div class="letter-from">南枝代笔·以木生之名<span class="en">XIE&nbsp;NANZHI</span></div>
+          <div class="letter-date">1960 · 木生头七</div>
+        </div>
+        <div class="letter-title">第一封代笔信 · 江上升明月</div>
+        <div class="letter-body">
+          <p>吾妻淑柔，展信安康。</p>
+          <p>随信寄二百银，我一切无恙，生意昌顺。</p>
+          <p><strong style="color:var(--vermilion)">行船入夜，恰江上升明月，圆如玉坠，仿若身在故乡，似与你并肩共赏。</strong></p>
+          <p>江海万里，心中念你，便不觉遥远。</p>
+          <p>湄南河畔木棉花盛开，像极了家乡的春天，压了一朵在信中，望你也能闻到花香。</p>
+          <p>近来握笔练字，学会了你的名，虽然潦草，努力数日定会成功。</p>
+          <p>纸短情长，伏惟珍重。</p>
+          <p class="sign">—— 夫木生字<br><span style="font-size:12px;color:var(--ink-soft)">（此为南枝在木生头七那夜提笔写下的第一封代笔信）</span></p>
+        </div>
+        <span class="letter-tag">展开此信</span>
+        <div class="letter-corner"></div>
+      </article>
+
+      <article class="letter-card" data-letter>
+        <div class="letter-meta">
+          <div class="letter-from">南枝·致淑柔<span class="en">XIE&nbsp;NANZHI</span></div>
+          <div class="letter-date">1962 · 心意</div>
+        </div>
+        <div class="letter-title">此生有你 · 无憾</div>
+        <div class="letter-body">
+          <p>淑柔姐姐，</p>
+          <p><strong style="color:var(--vermilion)">此生有你，无憾。</strong></p>
+          <p>暹罗在这头，唐山在那头，你在我心里头。</p>
+          <p>暹罗虽远，心有所寄，身若比邻，<strong style="color:var(--vermilion)">切要平安，即为团圆</strong>。</p>
+          <p>往后切莫孤勇，平安为要。</p>
+          <p>谁言女子之肩膀不够伟岸，<strong style="color:var(--vermilion)">为母则刚，恰似你的样子</strong>。</p>
+          <p class="sign">—— 妹，南枝</p>
+        </div>
+        <span class="letter-tag">展开此信</span>
+        <div class="letter-corner"></div>
+      </article>
+
+      <article class="letter-card" data-letter>
+        <div class="letter-meta">
+          <div class="letter-from">未寄出的讣告<span class="en">UNSENT&nbsp;OBITUARY</span></div>
+          <div class="letter-date">1960 · 银信局</div>
+        </div>
+        <div class="letter-title">被收回的那一封</div>
+        <div class="letter-body">
+          <p>那是一封南枝本打算寄出的讣告。她在柜台前排队时，目睹了银信局里形形色色的潮汕同乡：</p>
+          <p>有父亲焦急写信回家叫妻子赎回被卖的女儿；</p>
+          <p>有青年凑不出寄回家的钱，同乡把散钱塞进他掌心……</p>
+          <p>这些画面让南枝动摇。她想，那个在潮汕老家独自养活三个孩子的柔弱女人，若是得知丈夫的死讯，要如何度过漫长的余生？</p>
+          <p><strong style="color:var(--vermilion)">那封讣告最终被她收回。</strong></p>
+          <p>取而代之的，是冒木生之名写下的第一封侨批，以及十八年的相守不弃。</p>
+          <p class="sign" style="color:var(--ink-soft)">—— 憾未搜到原文。但"情"已尽在其中。</p>
+        </div>
+        <span class="letter-tag">展开此信</span>
+        <div class="letter-corner"></div>
+      </article>
+
+    </div>
+
+    <p style="text-align:center;margin-top:60px;font-family:'LXGW WenKai TC',serif;font-size:15px;color:var(--ink-soft);letter-spacing:.1em;line-height:2">
+      据影片美术组介绍，剧组按照真实历史侨批档案，<br>
+      <strong style="color:var(--vermilion)">共还原了数百封侨批</strong>，每一封均由美术老师亲笔书写。<br>
+      其中呈现在成片中的有二十七封。纸短情长，每一封都是一段岁月。
+    </p>
+  </div>
+</section>
+
+<!-- 人物群像 -->
+<section id="people" style="background:linear-gradient(180deg,var(--paper) 0%,var(--paper-deep) 100%)">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">PART&nbsp;IV&nbsp;·&nbsp;THE&nbsp;PEOPLE</div>
+      <h2>人&nbsp;&nbsp;物<span class="en">Five&nbsp;Hearts,&nbsp;One&nbsp;Promise</span></h2>
+      <p class="lead">五个人的半生纠缠，<br>只为了一句话：<strong style="color:var(--vermilion)">做人要有情有义</strong>。</p>
+    </div>
+
+    <div class="people-grid">
+      <div class="person-card">
+        <div class="person-portrait" style="background:linear-gradient(135deg,#c98a6a,#a85a3a)">
+          <svg viewBox="0 0 100 100" fill="rgba(255,255,255,.5)">
+            <circle cx="50" cy="35" r="20"/><path d="M20,90 Q20,60 50,60 Q80,60 80,90 Z"/>
+          </svg>
+        </div>
+        <div class="person-info">
+          <div class="person-role">WIFE&nbsp;·&nbsp;淑柔</div>
+          <div class="person-name">叶淑柔</div>
+          <div class="person-name-en">YE&nbsp;SHUROU</div>
+          <div class="person-desc">一个潮汕女人，独自扛起一个家。她把思念藏在冬至丸里，藏在打了新被棉的眠床里，藏在"待你归来再看花灯"的等里——温柔、坚韧、骄傲、刚烈。</div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-portrait" style="background:linear-gradient(135deg,#6a8a9a,#3a5a6a)">
+          <svg viewBox="0 0 100 100" fill="rgba(255,255,255,.5)">
+            <circle cx="50" cy="35" r="20"/><path d="M20,90 Q20,60 50,60 Q80,60 80,90 Z"/>
+          </svg>
+        </div>
+        <div class="person-info">
+          <div class="person-role">HUSBAND&nbsp;·&nbsp;木生</div>
+          <div class="person-name">郑木生</div>
+          <div class="person-name-en">ZHENG&nbsp;MUSHENG</div>
+          <div class="person-desc">大字不识的潮汕男人，踩三轮、卖苦力、攒船票。他用一封封"展信安康"为远方的家报平安；1960年七夕，他用生命护住同胞。报喜不报忧，是那个时代番客共同的模样。</div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-portrait" style="background:linear-gradient(135deg,#a86a6a,#6a3a3a)">
+          <svg viewBox="0 0 100 100" fill="rgba(255,255,255,.5)">
+            <circle cx="50" cy="35" r="20"/><path d="M20,90 Q20,60 50,60 Q80,60 80,90 Z"/>
+          </svg>
+        </div>
+        <div class="person-info">
+          <div class="person-role">NAMZHI&nbsp;·&nbsp;南枝</div>
+          <div class="person-name">谢南枝</div>
+          <div class="person-name-en">XIE&nbsp;NANZHI</div>
+          <div class="person-desc">暹罗华侨，旅馆房东之女。她在木生头七那夜提笔代笔，一写就是18年。她因他的恩，选择替他继续爱下去。她"自梳"终身，领养一子，也长成了中文老师。</div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-portrait" style="background:linear-gradient(135deg,#9a8a6a,#5a4a2a)">
+          <svg viewBox="0 0 100 100" fill="rgba(255,255,255,.5)">
+            <circle cx="50" cy="35" r="20"/><path d="M20,90 Q20,60 50,60 Q80,60 80,90 Z"/>
+          </svg>
+        </div>
+        <div class="person-info">
+          <div class="person-role">GRANDSON&nbsp;·&nbsp;晓伟</div>
+          <div class="person-name">晓伟</div>
+          <div class="person-name-en">XIAOWEI</div>
+          <div class="person-desc">淑柔的孙子。债务缠身，本想赴泰找"富得流油的阿公分几百万"。可这趟寻亲之旅，最后成了他的"成长之旅"——"有情有义的人养不出无情无义的孩子"。</div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-portrait" style="background:linear-gradient(135deg,#7a8a7a,#3a4a3a)">
+          <svg viewBox="0 0 100 100" fill="rgba(255,255,255,.5)">
+            <circle cx="50" cy="35" r="20"/><path d="M20,90 Q20,60 50,60 Q80,60 80,90 Z"/>
+          </svg>
+        </div>
+        <div class="person-info">
+          <div class="person-role">FRIEND&nbsp;·&nbsp;狄功</div>
+          <div class="person-name">狄&nbsp;功</div>
+          <div class="person-name-en">DI&nbsp;GONG</div>
+          <div class="person-desc">木生同乡，帮他代笔写家书。后来与木生一起在旅馆里给潮汕孩子教中文。"江海万里，心中念你，便不觉遥远。"——他是木生在异国最朴素的依靠。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 历史背景 -->
+<section id="history">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">PART&nbsp;V&nbsp;·&nbsp;HISTORY</div>
+      <h2>时&nbsp;代&nbsp;背&nbsp;景<span class="en">The&nbsp;Era&nbsp;Behind&nbsp;the&nbsp;Letters</span></h2>
+      <p class="lead">没有"下南洋"就没有侨批，<br>没有侨批就没有这一封封家书。</p>
+    </div>
+
+    <div class="history">
+
+      <article class="history-card">
+        <span class="num">壹</span>
+        <h3>下南洋<span class="en">THE&nbsp;SOUTHERN&nbsp;ODYSSEY</span></h3>
+        <p class="quote">"有潮水的地方，就有潮汕人。"<br><span style="color:var(--ink-soft);font-size:14px">—— 潮汕民间谚语</span></p>
+        <p>"南洋"，指的是东南亚。自19世纪中叶起，潮汕沿海的青壮年男子为谋生路、避战乱、抓壮丁，携一席行囊登上红头船，远渡暹罗（泰国）、马来亚（今马来西亚）、新加坡、印尼、越南、菲律宾等地。</p>
+        <p>三段大潮：清末民初、二战前后、1949年前后。据估计，泰国华人约1000万，潮汕人占多数；马来西亚华人约700万，潮汕人亦是重要一支。这些"番客"，成为海外华人中独特的一脉。</p>
+        <ul class="data-list">
+          <li><strong>主要去向</strong>暹罗 · 马来亚 · 新加坡 · 印尼 · 越南</li>
+          <li><strong>著名侨乡</strong>澄海 · 潮安 · 揭阳 · 潮阳 · 普宁 · 惠来</li>
+          <li><strong>交通工具</strong>"过番船"（红头船）——清政府许可的远洋帆船</li>
+          <li><strong>代表华侨</strong>陈嘉庚 · 蚁光炎 · 谢易初 · 李嘉诚</li>
+        </ul>
+        <p style="margin-top:18px;font-style:italic;color:var(--ink-soft)">影片中木生"踩三轮、卖苦力"的岁月，是那个时代无数底层华侨最真实的写照。"客"字，便有"永远做客"之意——如无根浮萍，永无归依。</p>
+      </article>
+
+      <article class="history-card">
+        <span class="num">贰</span>
+        <h3>侨&nbsp;&nbsp;批<span class="en">SILVER&nbsp;&amp;&nbsp;LETTERS</span></h3>
+        <p class="quote">"批一封，银二元，几多思念到唐山。"<br><span style="color:var(--ink-soft);font-size:14px">—— 潮汕侨批民谚</span></p>
+        <p>"批"在潮汕话里是"信"的意思。"侨批"又称"银信"，是19世纪中叶至20世纪70年代，海外华侨寄给国内眷属的<strong style="color:var(--vermilion)">书信与汇款的合一</strong>。它既是一封家书，也是一笔血汗钱。</p>
+        <p>2013年，"侨批档案：海外华侨银信"入选联合国教科文组织<strong style="color:var(--vermilion)">《世界记忆国际名录》</strong>，成为人类共同的记忆遗产。从清末的"水客"肩挑手提，到20世纪初专业批局兴起；从汕头、曼谷、新加坡、马六甲的连锁网络，到1950年代后期因历史原因衰落——侨批业走过了近百年。</p>
+        <ul class="data-list">
+          <li><strong>存在时期</strong>19世纪中叶 — 20世纪70年代</li>
+          <li><strong>代表批局</strong>致成 · 黄瑞兴 · 瑞信 · 捷成</li>
+          <li><strong>特别之处</strong>银信合一 · 跨境 · 长达近百年</li>
+          <li><strong>世界认可</strong>2013年入选世界记忆国际名录</li>
+        </ul>
+        <p style="margin-top:18px;font-style:italic;color:var(--ink-soft)">一封侨批，装得下对妻儿的思念、装得下对父母晚年的孝心、装得下对子弟读书的期盼。它是华侨对家国最朴素的回答。</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- 主题金句 -->
+<section class="theme-section">
+  <div class="container">
+    <div class="section-head" style="margin-bottom:40px">
+      <div class="eyebrow">PART&nbsp;VI&nbsp;·&nbsp;THE&nbsp;THEME</div>
+    </div>
+    <div class="theme-quote">
+      做人要有情有义
+      <span class="small">A MAN OF HEART, A MAN OF LOYALTY</span>
+    </div>
+    <p class="theme-en">— BE&nbsp;A&nbsp;PERSON&nbsp;OF&nbsp;COMPASSION&nbsp;&amp;&nbsp;RIGHTEOUSNESS —</p>
+
+    <div style="margin-top:100px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;max-width:1100px;margin-left:auto;margin-right:auto;text-align:left">
+      <div style="padding:30px;border:1px solid var(--paper-edge);background:rgba(244,234,208,.5);position:relative">
+        <div style="position:absolute;top:-12px;left:20px;background:var(--paper);padding:0 12px;font-family:'Italiana',serif;font-size:12px;letter-spacing:.3em;color:var(--vermilion)">I</div>
+        <p style="font-family:'LXGW WenKai TC',serif;font-size:16px;line-height:2;color:var(--ink)">在表达对家人最深切的思念时，他们不说"我想你"，只说——</p>
+        <p style="font-family:'Ma Shan Zheng',serif;font-size:24px;color:var(--vermilion);margin-top:14px">"江海有岸，团圆可盼。"</p>
+      </div>
+      <div style="padding:30px;border:1px solid var(--paper-edge);background:rgba(244,234,208,.5);position:relative">
+        <div style="position:absolute;top:-12px;left:20px;background:var(--paper);padding:0 12px;font-family:'Italiana',serif;font-size:12px;letter-spacing:.3em;color:var(--vermilion)">II</div>
+        <p style="font-family:'LXGW WenKai TC',serif;font-size:16px;line-height:2;color:var(--ink)">在表达对爱人的滚烫深情时，他们不写"我爱你"，只写——</p>
+        <p style="font-family:'Ma Shan Zheng',serif;font-size:24px;color:var(--vermilion);margin-top:14px">"暹罗没有春天，你就是我的春天。"</p>
+      </div>
+      <div style="padding:30px;border:1px solid var(--paper-edge);background:rgba(244,234,208,.5);position:relative">
+        <div style="position:absolute;top:-12px;left:20px;background:var(--paper);padding:0 12px;font-family:'Italiana',serif;font-size:12px;letter-spacing:.3em;color:var(--vermilion)">III</div>
+        <p style="font-family:'LXGW WenKai TC',serif;font-size:16px;line-height:2;color:var(--ink)">在表达女儿对父亲的思念和盼归之情时，只随信寄去一只——</p>
+        <p style="font-family:'Ma Shan Zheng',serif;font-size:24px;color:var(--vermilion);margin-top:14px">纸飞机。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 照片画廊 -->
+<section id="gallery" style="background:linear-gradient(180deg,var(--paper-deep) 0%,var(--paper) 100%)">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">PART&nbsp;VII&nbsp;·&nbsp;THE&nbsp;FRAMES</div>
+      <h2>光&nbsp;&nbsp;影<span class="en">Frames&nbsp;in&nbsp;the&nbsp;Light</span></h2>
+      <p class="lead">让镜头替我们记下，<br>那些欲说还休的瞬间。</p>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item gallery-1" data-img="D:/Ama/Pictures/59a933e6df79427bb9df235049354da9.webp" data-cap="稻田与远山·木生生前走过的路">
+        <img src="D:/Ama/Pictures/59a933e6df79427bb9df235049354da9.webp" alt="稻田" loading="lazy">
+        <div class="label">稻田与远山 · 木生生前走过的路</div>
+      </div>
+      <div class="gallery-item gallery-2" data-img="D:/Ama/Pictures/43e6de558a2c4fc99ae86e97201adb51.webp" data-cap="南枝在灯下写家书">
+        <img src="D:/Ama/Pictures/43e6de558a2c4fc99ae86e97201adb51.webp" alt="南枝" loading="lazy">
+        <div class="label">南枝 · 灯下代笔</div>
+      </div>
+      <div class="gallery-item gallery-3" data-img="D:/Ama/Pictures/2675fe53f6cf40d499d0173e3a2240f0.webp" data-cap="月是故乡明">
+        <img src="D:/Ama/Pictures/2675fe53f6cf40d499d0173e3a2240f0.webp" alt="月与海" loading="lazy">
+        <div class="label">月是故乡明</div>
+      </div>
+      <div class="gallery-item gallery-4" data-img="D:/Ama/Pictures/87e69ad9f1e14ef08a84b3320ea6a2d0.webp" data-cap="两个女人 · 一封家书">
+        <img src="D:/Ama/Pictures/87e69ad9f1e14ef08a84b3320ea6a2d0.webp" alt="收信" loading="lazy">
+        <div class="label">两个女人 · 一封家书</div>
+      </div>
+      <div class="gallery-item gallery-5" data-img="D:/Ama/Pictures/aa011daec99846e9b7669cdc706c785b.webp" data-cap="南枝与她所写的信">
+        <img src="D:/Ama/Pictures/aa011daec99846e9b7669cdc706c785b.webp" alt="写信" loading="lazy">
+        <div class="label">南枝与她所写的信</div>
+      </div>
+      <div class="gallery-item gallery-6" data-img="D:/Ama/Pictures/a337cdd8a0f1454d9cab4855c13e5348.webp" data-cap="细雨里的告别">
+        <img src="D:/Ama/Pictures/a337cdd8a0f1454d9cab4855c13e5348.webp" alt="告别" loading="lazy">
+        <div class="label">细雨里的告别</div>
+      </div>
+      <div class="gallery-item gallery-7" data-img="D:/Ama/Pictures/ef8c2d40dff74725aa8d05285d3d8a93.webp" data-cap="四个孩子 · 一封批">
+        <img src="D:/Ama/Pictures/ef8c2d40dff74725aa8d05285d3d8a93.webp" alt="孩子" loading="lazy">
+        <div class="label">四个孩子 · 一封批</div>
+      </div>
+      <div class="gallery-item gallery-8" data-img="D:/Ama/Pictures/7cdec35d38ca46d2b88d3e2e01e50a71.webp" data-cap="银信局的柜台前">
+        <img src="D:/Ama/Pictures/7cdec35d38ca46d2b88d3e2e01e50a71.webp" alt="银信局" loading="lazy">
+        <div class="label">银信局的柜台前</div>
+      </div>
+      <div class="gallery-item gallery-9" data-img="D:/Ama/Pictures/f29d1c5e66ca456b9a109ac730df25c3.webp" data-cap="南枝写坦白信">
+        <img src="D:/Ama/Pictures/f29d1c5e66ca456b9a109ac730df25c3.webp" alt="坦白信" loading="lazy">
+        <div class="label">一封被河水冲毁的坦白信</div>
+      </div>
+      <div class="gallery-item gallery-10" data-img="D:/Ama/Pictures/f098484da5c14dc99b904b1dbb87dcd5.webp" data-cap="相见 · 我来带你回家">
+        <img src="D:/Ama/Pictures/f098484da5c14dc99b904b1dbb87dcd5.webp" alt="相见" loading="lazy">
+        <div class="label">相见 · 我来带你回家</div>
+      </div>
+      <div class="gallery-item gallery-11" data-img="D:/Ama/Pictures/a983e683e81c4661a227a0de1027d48a.webp" data-cap="故人重逢">
+        <img src="D:/Ama/Pictures/a983e683e81c4661a227a0de1027d48a.webp" alt="重逢" loading="lazy">
+        <div class="label">故人重逢 · 几多岁月</div>
+      </div>
+      <div class="gallery-item gallery-12" data-img="D:/Ama/Pictures/p2931851974.webp" data-cap="平安当大赚">
+        <img src="D:/Ama/Pictures/p2931851974.webp" alt="平安" loading="lazy">
+        <div class="label">平安当大赚</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 观影感受 -->
+<section id="feel" class="feel-section" style="padding:120px 0">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">PART&nbsp;VIII&nbsp;·&nbsp;AFTER&nbsp;THE&nbsp;CREDITS</div>
+      <h2>观&nbsp;后<span class="en">What&nbsp;Stays&nbsp;With&nbsp;Us</span></h2>
+      <p class="lead">《给阿嬷的情书》拍得<strong style="color:var(--vermilion)">隽永克制</strong>，<br>而我，在观影后哭得不能自已。</p>
+    </div>
+
+    <div class="feel-text">
+      <p>这部电影最打动我的，不是哪一个撕心裂肺的转折，而是那些<strong class="em">欲言又止的瞬间</strong>。</p>
+
+      <p>淑柔收到那张"全家福"、误会木生已在暹罗另组家庭时，她没有歇斯底里地控诉他"负心"，只是将照片放于身旁小几上，<strong class="em">轻笑一声"现在才告诉我"</strong>。这是何等的骄傲，又是何等的深爱。</p>
+
+      <span class="quote">"人不怕穷，不怕远，也不怕死，怕的是无人牵挂，没人惦念，无家可归。"</span>
+
+      <p>现在的电影，很多都以"炫技"作为噱头，似乎没有大明星、大制作，电影就没了卖点。而《给阿嬷的情书》炫的最酷的"技"，是<strong class="em">克制</strong>。</p>
+
+      <p>在表达对家人最深切的思念时，他们不说"我想你"，只说"江海有岸，团圆可盼"；在表达对爱人的滚烫深情时，他们不写"我爱你"，只写"暹罗没有春天，你就是我的春天"；在表达女儿对父亲的思念和盼归之情时，<strong class="em">只随信寄去了一只纸飞机</strong>。</p>
+
+      <p>这种留白式的表达，让整个影片呈现出一种隽永、温柔的文学气质。文学自带沉静的力量——它不急于倾诉，不煽情，不作评判，只是安静地呈现。</p>
+
+      <span class="quote">"纸短情长，有多长？长到一封信要走好几个月，长到一生只够爱一个人。"</span>
+
+      <p>他们的浪漫，不是鲜花与誓言，而是一朵<strong class="em">压在信纸里的木棉花</strong>、一碗<strong class="em">即便没人吃也要留一份的冬至丸</strong>、一辆<strong class="em">用木头手搓而成的自行车</strong>——这种属于从前人的慢和浪漫，是这个只要给AI输入一个指令就能自动输出一大段"漂亮文"的时代所稀缺的。</p>
+
+      <p>我们喜欢《给阿嬷的情书》，不仅仅因为它的情感真挚动人，也因为羡慕片中人<strong class="em">曾被他人那样珍重地对待过</strong>。</p>
+
+      <p>而这，是我们求而不得的。</p>
+
+      <div class="signature">
+        纸短情长 · 伏惟珍重
+        <span class="en">WITH&nbsp;&nbsp;EVERY&nbsp;&nbsp;FIBER&nbsp;&nbsp;OF&nbsp;&nbsp;MY&nbsp;&nbsp;HEART</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 结语 -->
+<section class="epilogue">
+  <div class="epilogue-mark"><span>情</span></div>
+  <p class="epilogue-text">
+    人生有尽，<br>
+    <span class="em">情义无期</span>。
+  </p>
+  <p style="font-family:'LXGW WenKai TC',serif;font-size:18px;color:var(--ink);max-width:560px;margin:0 auto;line-height:2;letter-spacing:.1em">
+    愿你读到这里，<br>
+    也有人正为你，<br>
+    写着一封穿越山海的家书。
+  </p>
+
+  <p class="epilogue-credit">
+    A&nbsp;FILM&nbsp;BY&nbsp;LAN&nbsp;HONGCHUN&nbsp;·&nbsp;<a href="#hero">DEAR&nbsp;YOU</a>
+  </p>
+  <p style="font-family:'Italiana',serif;font-size:11px;letter-spacing:.4em;color:var(--ink-soft);margin-top:14px">
+    4·30 · 平安当大赚 · 做人 有情 有义
+  </p>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">×</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">‹</button>
+  <button class="lightbox-nav lightbox-next" id="lbNext">›</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lightbox-caption" id="lbCap"></div>
+</div>
+
+<script>
+/* ============== 木棉花飘落 ============== */
+(function(){
+  const kapok=document.getElementById('kapok');
+  const COUNT=14;
+  for(let i=0;i<COUNT;i++){
+    const s=document.createElement('span');
+    s.style.left=Math.random()*100+'%';
+    s.style.animationDuration=(10+Math.random()*12)+'s';
+    s.style.animationDelay=Math.random()*8+'s';
+    s.style.transform=`scale(${0.5+Math.random()*0.8}) rotate(${Math.random()*360}deg)`;
+    s.style.opacity=.4+Math.random()*.4;
+    kapok.appendChild(s);
+  }
+})();
+
+/* ============== 导航滚动样式 ============== */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+},{passive:true});
+
+/* ============== IntersectionObserver 渐入 ============== */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.chapter,.tl-item').forEach(el=>io.observe(el));
+
+/* ============== 侨批卡片展开 ============== */
+document.querySelectorAll('[data-letter]').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const opened=card.classList.contains('open');
+    // 关闭其他
+    document.querySelectorAll('[data-letter].open').forEach(c=>{
+      if(c!==card){c.classList.remove('open');c.querySelector('.letter-tag').textContent='展开此信';}
+    });
+    card.classList.toggle('open');
+    card.querySelector('.letter-tag').textContent=opened?'展开此信':'收起此信';
+  });
+});
+
+/* ============== 音乐控制 ============== */
+const bgm=document.getElementById('bgm');
+const musicBtn=document.getElementById('musicBtn');
+let isPlaying=false;
+musicBtn.classList.remove('playing');
+
+// 音量淡入
+bgm.volume=0;
+const targetVol=0.45;
+
+function tryPlay(){
+  const p=bgm.play();
+  if(p&&p.then){
+    p.then(()=>{
+      isPlaying=true;
+      musicBtn.classList.add('playing');
+      // 音量淡入
+      let v=0;
+      const f=setInterval(()=>{
+        v+=0.03;
+        if(v>=targetVol){v=targetVol;clearInterval(f);}
+        bgm.volume=v;
+      },120);
+    }).catch(()=>{
+      // 浏览器拦截，等用户首次点击
+    });
+  }
+}
+
+// 首次用户交互时尝试播放
+let tried=false;
+function firstPlay(){
+  if(tried) return;
+  tried=true;
+  tryPlay();
+}
+['click','touchstart','keydown','scroll'].forEach(ev=>{
+  window.addEventListener(ev,firstPlay,{once:true,passive:true});
+});
+
+musicBtn.addEventListener('click',(e)=>{
+  e.stopPropagation();
+  if(isPlaying){
+    bgm.pause();
+    isPlaying=false;
+    musicBtn.classList.remove('playing');
+  }else{
+    tryPlay();
+  }
+});
+
+/* ============== 画廊 Lightbox ============== */
+const galleryItems=[...document.querySelectorAll('.gallery-item')];
+const lightbox=document.getElementById('lightbox');
+const lbImg=document.getElementById('lbImg');
+const lbCap=document.getElementById('lbCap');
+const lbClose=document.getElementById('lbClose');
+const lbPrev=document.getElementById('lbPrev');
+const lbNext=document.getElementById('lbNext');
+let curIdx=0;
+
+function showLB(i){
+  curIdx=(i+galleryItems.length)%galleryItems.length;
+  const item=galleryItems[curIdx];
+  lbImg.src=item.dataset.img;
+  lbCap.textContent=item.dataset.cap||'';
+  lightbox.classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function hideLB(){
+  lightbox.classList.remove('show');
+  document.body.style.overflow='';
+}
+galleryItems.forEach((item,i)=>item.addEventListener('click',()=>showLB(i)));
+lbClose.addEventListener('click',hideLB);
+lbPrev.addEventListener('click',e=>{e.stopPropagation();showLB(curIdx-1)});
+lbNext.addEventListener('click',e=>{e.stopPropagation();showLB(curIdx+1)});
+lightbox.addEventListener('click',e=>{if(e.target===lightbox) hideLB()});
+document.addEventListener('keydown',e=>{
+  if(!lightbox.classList.contains('show')) return;
+  if(e.key==='Escape') hideLB();
+  if(e.key==='ArrowLeft') showLB(curIdx-1);
+  if(e.key==='ArrowRight') showLB(curIdx+1);
+});
+
+/* ============== 平滑滚动偏移 ============== */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    if(id.length<2) return;
+    const target=document.querySelector(id);
+    if(!target) return;
+    e.preventDefault();
+    const top=target.getBoundingClientRect().top+window.pageYOffset-60;
+    window.scrollTo({top,behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
